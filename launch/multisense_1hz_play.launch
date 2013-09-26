@@ -11,6 +11,8 @@
   <node pkg="topic_tools" type="relay" name="multisense_left_rect_color_relay" args=" /multisense_sl/left/image_rect_color_throttled /multisense_sl/left/image_rect_color" />
   <node pkg="topic_tools" type="relay" name="multisense_depth_relay" args=" /multisense_sl/depth_throttled /multisense_sl/depth" />
   
+  <node pkg="topic_tools" type="relay" name="multisense_camera_info_relay" args=" /multisense_sl/camera_info /multisense_sl/left/camera_info" />
+  
   <!--
   rosbag record /multisense_sl/points2_throttled /multisense_sl/left/image_mono_throttled /multisense_sl/left/image_rect_throttled /multisense_sl/left/image_rect_color_throttled /multisense_sl/depth_throttled /tf /laser/scan /multisense_sl/camera_info
   -->
