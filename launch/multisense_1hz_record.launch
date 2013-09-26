@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<launch>
+
+  <node pkg="topic_tools" type="throttle" name="multisense_pc_throttle" args="messages /multisense_sl/points2 1 /multisense_sl/points2_throttled" />
+  <node pkg="topic_tools" type="throttle" name="multisense_left_mono_throttle" args="messages /multisense_sl/left/image_mono 1 /multisense_sl/left/image_mono_throttled" />
+  <node pkg="topic_tools" type="throttle" name="multisense_left_rect_throttle" args="messages /multisense_sl/left/image_rect 1 /multisense_sl/left/image_rect_throttled" />
+  <node pkg="topic_tools" type="throttle" name="multisense_left_rect_color_throttle" args="messages /multisense_sl/left/image_rect_color 1 /multisense_sl/left/image_rect_color_throttled" />
+  <node pkg="topic_tools" type="throttle" name="multisense_depth_throttle" args="messages /multisense_sl/depth 1 /multisense_sl/depth_throttled" />
+  
+  <!--
+  rosbag record /multisense_sl/points2_throttled /multisense_sl/left/image_mono_throttled /multisense_sl/left/image_rect_throttled /multisense_sl/left/image_rect_color_throttled /multisense_sl/depth_throttled /tf /laser/scan /multisense_sl/camera_info
+  -->
+ 
+</launch>
