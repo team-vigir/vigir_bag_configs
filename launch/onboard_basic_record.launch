@@ -9,9 +9,10 @@
   <node pkg="topic_tools" type="throttle" name="atlas_command_throttle" args="messages /atlas/atlas_command 5 /atlas/atlas_command_throttled" />
   <node pkg="topic_tools" type="throttle" name="atlas_sim_interface_command_throttle" args="messages /atlas/atlas_sim_interface_command 5 /atlas/atlas_sim_interface_command_throttled" />
   <node pkg="topic_tools" type="throttle" name="flor_controller_atlas_pose_throttle" args="messages /flor/controller/atlas_pose 20 /flor/controller/atlas_pose_throttled" />
+  <node pkg="topic_tools" type="throttle" name="flor_controller_pelvis_pose_throttle" args="messages /flor/pelvis_controller/joint_states 20 /flor/pelvis_controller/joint_states_throttled" />
  
   
-  <node pkg="rosbag" type="record" name="onboard_data_rosbag_recorder" args="-o $(find flor_bag_record)/bags/$(optenv FLOR_TASK_TYPE unknown) --split --duration=5m /joint_states_throttled /atlas/joint_states_throttled /bdi_manipulate_pelvis_pose_rpy_throttled  /atlas/atlas_state_throttled /atlas/atlas_sim_interface_state_throttled /atlas/atlas_command_throttled /atlas/atlas_sim_interface_command_throttled /flor/controller/atlas_pose_throttled /flor/controller/mode" />
+  <node pkg="rosbag" type="record" name="onboard_data_rosbag_recorder" args="-o $(find flor_bag_record)/bags/$(optenv FLOR_TASK_TYPE unknown) --split --duration=30m /joint_states_throttled /atlas/joint_states_throttled /bdi_manipulate_pelvis_pose_rpy_throttled  /atlas/atlas_state_throttled /atlas/atlas_sim_interface_state_throttled /atlas/atlas_command_throttled /atlas/atlas_sim_interface_command_throttled /flor/controller/atlas_pose_throttled /flor/controller/mode /flor/pelvis_controller/joint_states_throttled" />
   <!--
   rosbag record /joint_states_throttled /atlas/joint_states_throttled /bdi_manipulate_pelvis_pose_rpy_throttled  /atlas/atlas_state_throttled /atlas/atlas_sim_interface_state_throttled /atlas/atlas_command_throttled /atlas/atlas_sim_interface_command_throttled /flor/controller/atlas_pose_throttled /flor/controller/mode
   -->
