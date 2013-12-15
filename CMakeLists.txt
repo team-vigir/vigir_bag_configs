@@ -4,10 +4,10 @@ project(flor_bag_record)
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
-find_package(catkin REQUIRED)
+find_package(catkin REQUIRED COMPONENTS roscpp sensor_msgs)
 
 ## System dependencies are found with CMake's conventions
-# find_package(Boost REQUIRED COMPONENTS system)
+find_package(Boost REQUIRED COMPONENTS system)
 
 
 ## Uncomment this if the package has a setup.py. This macro ensures
@@ -39,6 +39,10 @@ find_package(catkin REQUIRED)
 #   std_msgs  # Or other packages containing msgs
 # )
 
+set (SOURCES
+  src/cam_info_pub_node.cpp
+)
+
 ###################################
 ## catkin specific configuration ##
 ###################################
@@ -50,8 +54,8 @@ find_package(catkin REQUIRED)
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES flor_bag_record
-#  CATKIN_DEPENDS other_catkin_pkg
+  LIBRARIES ${PROJECT_NAME}
+  CATKIN_DEPENDS roscpp sensor_msgs
 #  DEPENDS system_lib
 )
 
@@ -69,7 +73,9 @@ catkin_package(
 # )
 
 ## Declare a cpp executable
-# add_executable(flor_bag_record_node src/flor_bag_record_node.cpp)
+add_executable(cam_info_pub_node src/cam_info_pub_node.cpp)
+target_link_libraries(cam_info_pub_node ${catkin_LIBRARIES})
+add_dependencies(cam_info_pub_node ${catkin_EXPORTED_TARGETS})
 
 ## Add cmake target dependencies of the executable/library
 ## as an example, message headers may need to be generated before nodes
