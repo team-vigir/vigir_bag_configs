@@ -4,7 +4,7 @@ project(flor_bag_record)
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
-find_package(catkin REQUIRED COMPONENTS roscpp sensor_msgs)
+find_package(catkin REQUIRED COMPONENTS roscpp sensor_msgs geometry_msgs tf)
 
 ## System dependencies are found with CMake's conventions
 find_package(Boost REQUIRED COMPONENTS system)
@@ -55,7 +55,7 @@ set (SOURCES
 catkin_package(
 #  INCLUDE_DIRS include
   LIBRARIES ${PROJECT_NAME}
-  CATKIN_DEPENDS roscpp sensor_msgs
+  CATKIN_DEPENDS roscpp sensor_msgs geometry_msgs tf
 #  DEPENDS system_lib
 )
 
@@ -76,6 +76,10 @@ catkin_package(
 add_executable(cam_info_pub_node src/cam_info_pub_node.cpp)
 target_link_libraries(cam_info_pub_node ${catkin_LIBRARIES})
 add_dependencies(cam_info_pub_node ${catkin_EXPORTED_TARGETS})
+
+add_executable(atlas_pose_to_world_pub_node src/atlas_pose_to_world_pub_node.cpp)
+target_link_libraries(atlas_pose_to_world_pub_node ${catkin_LIBRARIES})
+add_dependencies(atlas_pose_to_world_pub_node ${catkin_EXPORTED_TARGETS})
 
 ## Add cmake target dependencies of the executable/library
 ## as an example, message headers may need to be generated before nodes
