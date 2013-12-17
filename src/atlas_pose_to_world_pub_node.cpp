@@ -30,6 +30,7 @@
 
 #include <geometry_msgs/PoseStamped.h>
 #include <tf/transform_broadcaster.h>
+#include <nav_msgs/Odometry.h>
 
 
 class AtlasPoseToWorldPub
@@ -39,7 +40,8 @@ class AtlasPoseToWorldPub
     {
       ros::NodeHandle nh("");
       //cam_info_pub_ = nh.advertise<sensor_msgs::CameraInfo>("/multisense_sl/left/camera_info",1);
-      image_sub_ = nh.subscribe("/flor/controller/atlas_pose", 5, &AtlasPoseToWorldPub::poseCallback, this);
+      pose_sub_ = nh.subscribe("/flor/controller/atlas_pose", 5, &AtlasPoseToWorldPub::poseCallback, this);
+      odom_sub_ = nh.subscribe("/ground_truth_odom", 5, &AtlasPoseToWorldPub::odomCallback, this);
     }
 
     void poseCallback(const geometry_msgs::PoseStamped::ConstPtr& msg)
@@ -61,10 +63,30 @@ class AtlasPoseToWorldPub
 
     }
 
+    void odomCallback(const nav_msgs::Odometry::ConstPtr& msg)
+    {
+
+      tf::StampedTransform transform;
+
+      transform.setOrigin(tf::Vector3(msg->pose.pose.position.x, msg->pose.pose.position.y, msg->pose.pose.position.z));
+
+      tf::Quaternion orientation;
+      tf::quaternionMsgToTF(msg->pose.pose.orientation, orientation);
+
+      transform.setRotation(orientation);
+
+      transform.stamp_ = msg->header.stamp;
+      transform.child_frame_id_ = "pelvis";
+      transform.frame_id_ = "world";
+      tfb_.sendTransform(transform);
+
+    }
+
 
   protected:
     tf::TransformBroadcaster tfb_;
-    ros::Subscriber image_sub_;
+    ros::Subscriber pose_sub_;
+    ros::Subscriber odom_sub_;
 
 
 };
