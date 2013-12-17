@@ -39,8 +39,10 @@ class AtlasPoseToWorldPub
     AtlasPoseToWorldPub()
     {
       ros::NodeHandle nh("");
-      //cam_info_pub_ = nh.advertise<sensor_msgs::CameraInfo>("/multisense_sl/left/camera_info",1);
+      pelvis_pose_world_pub_ = nh.advertise<geometry_msgs::PoseStamped>("/flor/state/pelvis_pose_world",1);
+
       pose_sub_ = nh.subscribe("/flor/controller/atlas_pose", 5, &AtlasPoseToWorldPub::poseCallback, this);
+
       odom_sub_ = nh.subscribe("/ground_truth_odom", 5, &AtlasPoseToWorldPub::odomCallback, this);
     }
 
@@ -80,10 +82,19 @@ class AtlasPoseToWorldPub
       transform.frame_id_ = "world";
       tfb_.sendTransform(transform);
 
+      geometry_msgs::PoseStamped pelvis_pose_msg;
+      pelvis_pose_msg.pose = msg->pose.pose;
+      pelvis_pose_msg.header.stamp = msg->header.stamp;
+      pelvis_pose_msg.header.frame_id = "world";
+
+      pelvis_pose_world_pub_.publish(pelvis_pose_msg);
+
     }
 
 
   protected:
+    ros::Publisher pelvis_pose_world_pub_;
+
     tf::TransformBroadcaster tfb_;
     ros::Subscriber pose_sub_;
     ros::Subscriber odom_sub_;
