@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<!--
+ Simplifies adding throttled publishers by using args
+-->
+
+<launch>
+
+  <arg name="topic" default="topic"/>
+  <arg name="interval_seconds" default="1.0"/>
+
+  <node pkg="topic_tools" type="throttle" name="$(anon throttled_record)" args="messages $(arg topic) $(arg interval_seconds) $(arg topic)_throttled" />
+
+</launch>
