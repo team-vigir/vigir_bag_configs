@@ -3,13 +3,7 @@
   
   <param name="/use_sim_time" value="true" />
   
-  <include file="$(find flor_atlas_bringup)/launch/robot_description.launch" />
-
-  <node pkg="topic_tools" type="relay" name="multisense_pc_relay" args="/multisense_sl/points2_throttled /multisense_sl/points2" />
-  <node pkg="topic_tools" type="relay" name="multisense_left_mono_relay" args="/multisense_sl/left/image_mono_throttled /multisense_sl/left/image_mono" />
-  <node pkg="topic_tools" type="relay" name="multisense_left_rect_relay" args="/multisense_sl/left/image_rect_throttled /multisense_sl/left/image_rect" />
-  <node pkg="topic_tools" type="relay" name="multisense_left_rect_color_relay" args=" /multisense_sl/left/image_rect_color_throttled /multisense_sl/left/image_rect_color" />
-  <node pkg="topic_tools" type="relay" name="multisense_depth_relay" args=" /multisense_sl/depth_throttled /multisense_sl/depth" />
+  <include file="$(find flor_bag_record)/launch/multisense_camera_all_throttled_play.launch">
   
   <node pkg="topic_tools" type="relay" name="multisense_camera_info_relay" args=" /multisense_sl/camera_info /multisense_sl/left/camera_info" />
   <node pkg="topic_tools" type="relay" name="laser_scan_relay" args=" /laser/scan /multisense_sl/laser/scan" />
