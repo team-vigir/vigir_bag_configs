@@ -2,7 +2,7 @@
 
 <launch>
 
-  <arg name="interval_seconds" default="0.25" />
+  <arg name="interval_seconds" default="10" />
 
   <include file="$(find flor_bag_record)/launch/throttled_record.launch">
     <arg name="topic" value="/multisense_sl/left/image_rect"/>
@@ -15,7 +15,7 @@
   </include>
 
   <include file="$(find flor_bag_record)/launch/sa_cameras_throttled.launch">
-    <arg name="interval_seconds" value="0.5"/>
+    <arg name="interval_seconds" value="5"/>
   </include>
 
   
