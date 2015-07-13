@@ -2,7 +2,7 @@
 
 <launch>
 
-  <include file="$(find flor_bag_record)/launch/multisense_camera_all_throttled.launch">
+  <include file="$(find vigir_bag_config)/launch/multisense_camera_all_throttled.launch">
     <arg name="interval_seconds" value="1.0"/>
   </include>
 

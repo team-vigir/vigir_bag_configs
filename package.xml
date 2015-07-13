@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package>
-  <name>flor_bag_record</name>
+  <name>vigir_bag_config</name>
   <version>0.0.0</version>
-  <description>The flor_bag_record package</description>
+  <description>The vigir_bag_config package</description>
 
   <!-- One maintainer tag required, multiple allowed, one person per tag -->
   <!-- Example:  -->
@@ -19,7 +19,7 @@
   <!-- Url tags are optional, but mutiple are allowed, one per tag -->
   <!-- Optional attribute type can be: website, bugtracker, or repository -->
   <!-- Example: -->
-  <!-- <url type="website">http://ros.org/wiki/flor_bag_record</url> -->
+  <!-- <url type="website">http://ros.org/wiki/vigir_bag_config</url> -->
 
 
   <!-- Author tags are optional, mutiple are allowed, one per tag -->

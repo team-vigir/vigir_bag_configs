@@ -4,17 +4,17 @@
 
   <arg name="interval_seconds" default="10" />
 
-  <include file="$(find flor_bag_record)/launch/throttled_record.launch">
+  <include file="$(find vigir_bag_config)/launch/throttled_record.launch">
     <arg name="topic" value="/multisense_sl/left/image_rect"/>
     <arg name="interval_seconds" value="$(arg interval_seconds)"/>
   </include>
 
-  <include file="$(find flor_bag_record)/launch/throttled_record.launch">
+  <include file="$(find vigir_bag_config)/launch/throttled_record.launch">
     <arg name="topic" value="/multisense_sl/depth"/>
     <arg name="interval_seconds" value="$(arg interval_seconds)"/>
   </include>
 
-  <include file="$(find flor_bag_record)/launch/sa_cameras_throttled.launch">
+  <include file="$(find vigir_bag_config)/launch/sa_cameras_throttled.launch">
     <arg name="interval_seconds" value="5"/>
   </include>
 

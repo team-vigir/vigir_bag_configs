@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(flor_bag_record)
+project(vigir_bag_config)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
@@ -68,8 +68,8 @@ catkin_package(
 # include_directories(include)
 
 ## Declare a cpp library
-# add_library(flor_bag_record
-#   src/${PROJECT_NAME}/flor_bag_record.cpp
+# add_library(vigir_bag_config
+#   src/${PROJECT_NAME}/vigir_bag_config.cpp
 # )
 
 ## Declare a cpp executable
@@ -83,10 +83,10 @@ add_dependencies(atlas_pose_to_world_pub_node ${catkin_EXPORTED_TARGETS})
 
 ## Add cmake target dependencies of the executable/library
 ## as an example, message headers may need to be generated before nodes
-# add_dependencies(flor_bag_record_node flor_bag_record_generate_messages_cpp)
+# add_dependencies(vigir_bag_config_node vigir_bag_config_generate_messages_cpp)
 
 ## Specify libraries to link a library or executable target against
-# target_link_libraries(flor_bag_record_node
+# target_link_libraries(vigir_bag_config_node
 #   ${catkin_LIBRARIES}
 # )
 
@@ -105,7 +105,7 @@ add_dependencies(atlas_pose_to_world_pub_node ${catkin_EXPORTED_TARGETS})
 # )
 
 ## Mark executables and/or libraries for installation
-# install(TARGETS flor_bag_record flor_bag_record_node
+# install(TARGETS vigir_bag_config vigir_bag_config_node
 #   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 #   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 #   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
@@ -130,7 +130,7 @@ add_dependencies(atlas_pose_to_world_pub_node ${catkin_EXPORTED_TARGETS})
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_flor_bag_record.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_vigir_bag_config.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()

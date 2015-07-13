@@ -3,7 +3,7 @@
   
   <param name="/use_sim_time" value="true" />
   
-  <include file="$(find flor_bag_record)/launch/multisense_camera_all_throttled_play.launch">
+  <include file="$(find vigir_bag_config)/launch/multisense_camera_all_throttled_play.launch">
   
   <node pkg="topic_tools" type="relay" name="multisense_camera_info_relay" args=" /multisense_sl/camera_info /multisense_sl/left/camera_info" />
   <node pkg="topic_tools" type="relay" name="laser_scan_relay" args=" /laser/scan /multisense_sl/laser/scan" />

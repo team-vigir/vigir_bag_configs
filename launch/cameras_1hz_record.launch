@@ -4,11 +4,11 @@
 
   <arg name="interval_seconds" default="1.0" />
 
-  <include file="$(find flor_bag_record)/launch/multisense_camera_all_throttled_record.launch">
+  <include file="$(find vigir_bag_config)/launch/multisense_camera_all_throttled_record.launch">
     <arg name="interval_seconds" value="$(arg interval_seconds)"/>
   </include>
 
-  <include file="$(find flor_bag_record)/launch/sa_cameras_throttled.launch">
+  <include file="$(find vigir_bag_config)/launch/sa_cameras_throttled.launch">
     <arg name="interval_seconds" value="$(arg interval_seconds)"/>
   </include>
 

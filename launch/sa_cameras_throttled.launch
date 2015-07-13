@@ -3,12 +3,12 @@
   
   <arg name="interval_seconds" default="1.0" />
 
-  <include file="$(find flor_bag_record)/launch/throttled_record.launch">
+  <include file="$(find vigir_bag_config)/launch/throttled_record.launch">
     <arg name="topic" value="/sa/left/image_raw"/>
     <arg name="interval_seconds" value="$(arg interval_seconds)"/>
   </include>
 
-  <include file="$(find flor_bag_record)/launch/throttled_record.launch">
+  <include file="$(find vigir_bag_config)/launch/throttled_record.launch">
     <arg name="topic" value="/sa/right/image_raw"/>
     <arg name="interval_seconds" value="$(arg interval_seconds)"/>
   </include>
