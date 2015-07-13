@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<launch>
+    
+  <param name="/use_sim_time" value="true" />  
+
+  <node pkg="topic_tools" type="relay" name="multisense_left_relay" args="/multisense_sl/left/image_rect_color_throttled /multisense_sl/left/image_rect" />
+  <node pkg="topic_tools" type="relay" name="multisense_points2_relay" args="/multisense_sl/points2_throttled /multisense_sl/points2" />
+  
+  <node pkg="topic_tools" type="relay" name="atlas_joint_states_relay" args="/atlas/joint_states /test_joint_states" />
+  <node pkg="topic_tools" type="relay" name="joint_states_relay" args="/joint_states /test_joint_states" />
+  
+  <param name="robot_description_normal" command="$(find xacro)/xacro.py '$(find flor_atlas_description)/robots/flor_atlas.urdf.xacro'" />
+
+  
+  <node pkg="flor_atlas_calibration" type="joint_state_republisher_node" name="joint_state_republisher_node" respawn="true" >
+    <remap from="joint_states_original" to="/test_joint_states" />
+    <remap from="joint_states_corrected" to="/joint_states_corrected" />
+  </node>
+  
+  <node pkg="robot_state_publisher" type="state_publisher" name="atlas_robot_state_publisher_normal" respawn="true" >
+    <param name="publish_frequency" type="double" value="50.0" />
+    <remap from="joint_states" to="/joint_states_corrected" />
+    <remap from="robot_description" to="robot_description_normal" />
+   </node>
+  
+
+<!--  <param name="robot_description_generated" textfile="$(find flor_atlas_calibration)/estimate_params/robot_calibrated_2013_12_15_20_32.xml" />
+  <node pkg="robot_state_publisher" type="state_publisher" name="atlas_robot_state_publisher_generated" respawn="true" >
+    <param name="publish_frequency" type="double" value="50.0" />
+    <remap from="joint_states" to="/test_joint_states" />
+    <remap from="robot_description" to="robot_description_generated" />
+  </node>-->
+  
+  
+</launch>

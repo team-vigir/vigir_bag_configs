@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<launch>
+  <node pkg="topic_tools" type="throttle" name="sa_left_fisheye_throttle" args="messages /sa/left/fisheye 10 /sa/left/fisheye_throttled" />
+  <node pkg="topic_tools" type="throttle" name="sa_right_fisheye_throttle" args="messages /sa/right/fisheye 10 /sa/right/fisheye_throttled" />
+  <node pkg="topic_tools" type="throttle" name="sa_left_rect_throttle" args="messages /sa/left/equirectangular 10 /sa/left/equirectangular_throttled" />
+  <node pkg="topic_tools" type="throttle" name="sa_right_rect_throttle" args="messages /sa/right/equirectangular 10 /sa/right/equirecangular_throttled" />
+
+  <node pkg="topic_tools" type="throttle" name="multisense_left_rect_throttle" args="messages /multisense_sl/left/image_rect 10 /multisense_sl/left/image_rect_throttled" />
+  <node pkg="topic_tools" type="throttle" name="multisense_right_rect_throttle" args="messages /multisense_sl/right/image_rect 10 /multisense_sl/right/image_rect_throttled" />
+
+</launch>

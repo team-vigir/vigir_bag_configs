@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<launch>
+  
+  <param name="/use_sim_time" value="true" />
+
+  <arg name="interval_seconds" default="1.0" />
+
+  <include file="$(find flor_bag_record)/launch/throttled_play.launch">
+    <arg name="topic" value="/multisense_sl/image_points2_color"/>
+  </include>
+
+  <include file="$(find flor_bag_record)/launch/throttled_play.launch">
+    <arg name="topic" value="messages /multisense_sl/left/image_mono"/>
+  </include>
+
+  <include file="$(find flor_bag_record)/launch/throttled_play.launch">
+    <arg name="topic" value="/multisense_sl/left/image_rect"/>
+  </include>
+
+  <include file="$(find flor_bag_record)/launch/throttled_play.launch">
+    <arg name="topic" value="/multisense_sl/left/image_rect_color"/>
+  </include>
+
+  <include file="$(find flor_bag_record)/launch/throttled_play.launch">
+    <arg name="topic" value="/multisense_sl/depth"/>
+  </include>
+
+</launch>

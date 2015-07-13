@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<launch>
+
+  <param name="/use_sim_time" value="true" />
+
+  <node pkg="topic_tools" type="relay" name="bdi_manipulate_pelvis_pose_rpy_throttle" args=" /bdi_manipulate_pelvis_pose_rpy_throttled  /bdi_manipulate_pelvis_pose_rpy" />
+  <node pkg="topic_tools" type="relay" name="atlas_joint_states_throttle" args=" /atlas/joint_states_throttled  /atlas/joint_states" />
+  <node pkg="topic_tools" type="relay" name="joint_states_throttle" args=" /joint_states_throttled  /joint_states" />
+  <node pkg="topic_tools" type="relay" name="atlas_state_throttle" args=" /atlas/atlas_state_throttled  /atlas/atlas_state" />
+  <node pkg="topic_tools" type="relay" name="atlas_sim_interface_state_throttle" args=" /atlas/atlas_sim_interface_state/throttled  /atlas/atlas_sim_interface_state" />
+  <node pkg="topic_tools" type="relay" name="atlas_command_throttle" args=" /atlas/atlas_command_throttled  /atlas/atlas_command" />
+  <node pkg="topic_tools" type="relay" name="atlas_sim_interface_command_throttle" args=" /atlas/atlas_sim_interface_command_throttled  /atlas/atlas_sim_interface_command" />
+  <node pkg="topic_tools" type="relay" name="flor_controller_atlas_pose_throttle" args=" /flor/controller/atlas_pose_throttled  /flor/controller/atlas_pose" />
+  <node pkg="topic_tools" type="relay" name="flor_controller_pelvis_pose_throttle" args=" /flor/pelvis_controller/joint_states_throttled  /flor/pelvis_controller/joint_states" />
+
+  <include file="$(find flor_atlas_bringup)/launch/robot_description.launch" />
+
+  <include file="$(find flor_atlas_bringup)/launch/state_publishers.launch" />
+
+  <node pkg="flor_bag_record" type="atlas_pose_to_world_pub_node" name="atlas_pose_to_world_pub_node"/>
+
+  <!-- 
+  <node pkg="rosbag" type="record" name="onboard_data_rosbag_recorder" args="-o $(find flor_bag_record)/bags/$(optenv FLOR_TASK_TYPE unknown) ++split ++duration=30m /joint_states_throttled /atlas/joint_states_throttled /bdi_manipulate_pelvis_pose_rpy_throttled  /atlas/atlas_state_throttled /atlas/atlas_sim_interface_state_throttled /atlas/atlas_command_throttled /atlas/atlas_sim_interface_command_throttled /flor/controller/atlas_pose_throttled /flor/controller/mode /flor/pelvis_controller/joint_states_throttled /flor/l_arm_controller/trajectory /flor/pelvis_controller/trajectory /flor/pelvis_controller/pelvis_states /flor/worldmodel/ocs/cloud_result /flor/worldmodel/ocs/stereo_cloud_result /flor/planning/upper_body/plan_request /flor/planning/upper_body/plan_joint_request /flor/planning/upper_body/plan_cartesian_request /flor/planning/upper_body/plan_circular_request /flor/planning/upper_body/configuration /flor/planning/upper_body/status /flor/worldmodel/ocs/gridmap_result /flor/worldmodel/ocs/gridmap_request /flor/worldmodel/ocs_augmented_regions /flor/worldmodel/ocs/octomap_request /flor/worldmodel/ocs/octomap_result /flor/l_arm_controller/trajectory /flor/r_arm_controller/trajectory /flor/r_leg_controller/trajectory /flor/l_leg_controller/trajectory /flor/torso_controller/trajectory /flor/wb_controller/trajectory" />
+ -->
+  <!--
+  rosbag record /joint_states_throttled /atlas/joint_states_throttled /bdi_manipulate_pelvis_pose_rpy_throttled  /atlas/atlas_state_throttled /atlas/atlas_sim_interface_state_throttled /atlas/atlas_command_throttled /atlas/atlas_sim_interface_command_throttled /flor/controller/atlas_pose_throttled /flor/controller/mode
+  -->
+ 
+</launch>

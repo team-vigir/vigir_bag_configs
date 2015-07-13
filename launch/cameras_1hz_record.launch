@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+
+<launch>
+
+  <arg name="interval_seconds" default="1.0" />
+
+  <include file="$(find flor_bag_record)/launch/multisense_camera_all_throttled_record.launch">
+    <arg name="interval_seconds" value="$(arg interval_seconds)"/>
+  </include>
+
+  <include file="$(find flor_bag_record)/launch/sa_cameras_throttled.launch">
+    <arg name="interval_seconds" value="$(arg interval_seconds)"/>
+  </include>
+
+  
+  <!--
+  rosbag record /multisense_sl/image_points2_color_throttled /multisense_sl/left/image_mono_throttled /multisense_sl/left/image_rect_throttled /multisense_sl/left/image_rect_color_throttled /multisense_sl/depth_throttled /tf /laser/scan /multisense_sl/camera_info /sa/left/image_raw_throttled /sa/left/camera_info /sa/right/image_raw_throttled /sa/right/camera_info
+  -->
+ 
+</launch>

@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+
+<!--
+ Simplifies playing back throttled publishers to their original topics by using args
+-->
+
+<launch>
+
+  <arg name="topic" default="topic"/>
+
+  <node pkg="topic_tools" type="relay" name="$(anon throttled_play)" args=" $(arg topic)_throttled $(arg topic)" />
+
+</launch>
