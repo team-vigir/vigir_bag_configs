@@ -9,7 +9,7 @@
   </include>
 
   <include file="$(find vigir_bag_config)/launch/throttled_record.launch">
-    <arg name="topic" value="messages /multisense_sl/left/image_mono"/>
+    <arg name="topic" value="/multisense_sl/left/image_mono"/>
     <arg name="interval_seconds" value="$(arg interval_seconds)"/>
   </include>
 
